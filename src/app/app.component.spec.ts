@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -7,7 +9,18 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        FormsModule,
+        QRCodeModule,
+      ]
     }).compileComponents();
+  });
+
+  it('should render input', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect (compiled.querySelector('input')).toBeTruthy();
   });
 
   it('should create the app', () => {
